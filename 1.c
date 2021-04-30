@@ -1,3 +1,4 @@
+
 #define EPS 0.0000000000001
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,28 +38,26 @@ int count(  FILE *fp , int * c)
  
 int file_arr(  FILE *fp, double * b, int n)
 {
-	int i;
+	int i=0;
+	int m = 0;
 	double x, tmp;
 	
-	for(  i = 0; i < n; i++)
+	while( fscanf( fp, "%lf", b + i) == 1)
 	{
-		
-		if(fscanf(fp,"%lf",&tmp) ==EOF)
-		{
-		return -1;
-		}
-		
-		if(!(fscanf( fp, "%lf", b + i)))
-		{
-			return - 1;
-		}
+		i++;
+		m++;
 	}
 	
+	if(m != n)
+	{
+		return -1;
+	}
 	
 	if(fscanf(fp,"%lf",&tmp)!=EOF)
 	{
 		return -1;
 	}
+	
 	return 0;
 	
 }
@@ -173,4 +172,5 @@ int main (int argc, char **argv)
 	
 	
 }
+
 
