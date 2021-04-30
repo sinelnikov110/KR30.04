@@ -38,20 +38,23 @@ int count(  FILE *fp , int * c)
 int file_arr(  FILE *fp, double * b, int n)
 {
 	int i;
-	int m = 1;
 	double x, tmp;
 	
-	for(  i = 0; i < n; i++, m++)
+	for(  i = 0; i < n; i++)
 	{
+		
+		if(fscanf(fp,"%lf",&tmp) ==EOF)
+		{
+		return -1;
+		}
+		
 		if(!(fscanf( fp, "%lf", b + i)))
 		{
 			return - 1;
 		}
 	}
-	if(m < n)
-	{
-		return -1;
-	}
+	
+	
 	if(fscanf(fp,"%lf",&tmp)!=EOF)
 	{
 		return -1;
